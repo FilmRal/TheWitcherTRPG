@@ -14,7 +14,12 @@
                             <i class="fa-solid fa-book"></i>
                         </span>
                     </a>
-                    <div><a class="spell-roll">{{spell.name}}</a></div>
+                    <div class="red-magic-cast-wrap">
+                        <div class="red-magic-name">{{spell.name}}</div>
+                        <a class="spell-roll red-cast-button" data-tooltip="Cast {{spell.name}}">
+                            <i class="fa-solid fa-wand-sparkles"></i> CAST
+                        </a>
+                    </div>
                     <div class="list-label">
                         {{#if spell.system.staminaIsVar}}
                             <span>
@@ -73,7 +78,7 @@
                                 <i class="fa-solid fa-clock-rotate-left"></i>
                                 {{spell.system.duration}}
                             </span>
-                        {{/if}}
+                        {{/if}
                         {{#if spell.system.defence}}
                             <span class="item-tag" data-tooltip="{{localize "WITCHER.Spell.Defence"}}">
                                 <i class="fa-solid fa-shield-halved"></i>
@@ -115,43 +120,37 @@
                                     <div class="stored-item-info">
                                         <div class="item-tags">
                                             {{#if component.item.system.type}}
-                                                <span class="item-tag"
-                                                    data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
                                                     <i class="fa-solid fa-gem"></i>
                                                     {{component.item.system.type}}
                                                 </span>
                                             {{/if}}
                                             {{#if component.item.system.rarity}}
-                                                <span class="item-tag"
-                                                    data-tooltip="{{localize "WITCHER.Component.Rarity"}}">
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Rarity"}}">
                                                     <i class="fa-solid fa-gem"></i>
                                                     {{component.item.system.rarity}}
                                                 </span>
                                             {{/if}}
                                             {{#if component.item.system.quantityObtainable}}
-                                                <span class="item-tag"
-                                                    data-tooltip="{{localize "WITCHER.Component.Quantity"}}">
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Quantity"}}">
                                                     <i class="fa-solid fa-dice"></i>
                                                     {{component.item.system.quantityObtainable}}
                                                 </span>
                                             {{/if}}
                                             {{#if component.item.system.forage}}
-                                                <span class="item-tag"
-                                                    data-tooltip="{{localize "WITCHER.Component.Forage"}}">
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Component.Forage"}}">
                                                     <i class="fa-solid fa-dice-d20"></i>
                                                     {{component.item.system.forage}}
                                                 </span>
                                             {{/if}}
                                             {{#if component.item.system.weight}}
-                                                <span class="item-tag"
-                                                    data-tooltip="{{localize "WITCHER.Item.Weight"}}">
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
                                                     <i class="fa-solid fa-weight-hanging"></i>
                                                     {{component.item.system.weight}}
                                                 </span>
                                             {{/if}}
                                             {{#if component.item.system.cost}}
-                                                <span class="item-tag"
-                                                    data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
+                                                <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
                                                     <i class="fa-solid fa-coins"></i>
                                                     {{component.item.system.cost}}
                                                 </span>
