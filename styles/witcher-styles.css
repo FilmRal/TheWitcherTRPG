@@ -38,6 +38,7 @@
 @import './configurations/modifier-configuration.css';
 @import './red-ui.css';
 @import './red-combat.css';
+@import './red-magic.css';
 
 @font-face {
     font-family: 'Thewitcher';
