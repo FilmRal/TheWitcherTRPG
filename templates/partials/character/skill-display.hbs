@@ -1,13 +1,10 @@
-<a class="char-stat-button skill {{#if skill.isProfession}}profession{{else if skill.isPickup}}pickup{{else if skill.isLearned}}learned{{/if}}"
-    data-action="rollSkill" data-skill="{{name}}" data-stat={{stat}}>
+<a class="char-stat-button skill red-skill-card {{#if skill.isProfession}}profession{{else if skill.isPickup}}pickup{{else if skill.isLearned}}learned{{/if}}"
+    data-action="rollSkill" data-skill="{{name}}" data-stat={{stat}} data-tooltip="Roll {{localize skill.label}}">
     <div class="label">
         <span>{{localize skill.label}}</span>
-        {{#if (gte skill.modifiedValue 0)}}
-            <span>+{{skill.modifiedValue}}</span>
-        {{else}}
-            <span>{{skill.modifiedValue}}</span>
-        {{/if}}
+        <strong>{{#if (gte skill.modifiedValue 0)}}+{{skill.modifiedValue}}{{else}}{{skill.modifiedValue}}{{/if}}</strong>
     </div>
+    <span class="red-roll-hint"><i class="fa-solid fa-dice-d20"></i> ROLL</span>
     {{#if (or skill.isProfession skill.isPickup skill.isLearned)}}
         <div class="skill-icons">
             {{#if skill.isProfession}}
