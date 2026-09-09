@@ -1,0 +1,313 @@
+:root {
+    --witcher-red-bg: #101214;
+    --witcher-red-panel: #171a1e;
+    --witcher-red-panel-2: #1d2126;
+    --witcher-red-border: #343a40;
+    --witcher-red-text: #e8edf2;
+    --witcher-red-muted: #8e98a3;
+    --witcher-red-accent: #d43b3b;
+    --witcher-red-accent-2: #ff5555;
+    --witcher-red-good: #4caf72;
+    --witcher-red-warning: #d9a441;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) {
+    --color-text-primary: var(--witcher-red-text);
+    --color-text-secondary: var(--witcher-red-muted);
+    --color-border-light-1: var(--witcher-red-border);
+    --color-border-light-2: var(--witcher-red-border);
+    --color-border-dark-1: #08090a;
+    --color-border-dark-2: #08090a;
+    background: var(--witcher-red-bg);
+    color: var(--witcher-red-text);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .window-content {
+    background: var(--witcher-red-bg);
+    color: var(--witcher-red-text);
+    gap: 12px 18px;
+    grid-template-columns: 185px 1fr;
+    grid-template-rows: 118px 48px 1fr;
+    padding: 12px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-sidebar {
+    background: var(--witcher-red-panel);
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 8px;
+    padding: 10px;
+    overflow: auto;
+    box-shadow: 0 4px 18px rgba(0,0,0,.25);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-image {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .witcher-actor-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 2px solid var(--witcher-red-border);
+    border-radius: 6px;
+    background: #090a0c;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .wound-state {
+    position: absolute;
+    right: 7px;
+    bottom: 7px;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(8,9,10,.9);
+    border: 1px solid var(--witcher-red-border);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .status-section {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .progress-container {
+    position: relative;
+    background: var(--witcher-red-panel-2);
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 5px;
+    padding: 5px 7px 4px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .progress-header {
+    margin: 0 0 3px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--witcher-red-muted);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) progress {
+    width: 100%;
+    height: 7px;
+    accent-color: var(--witcher-red-accent);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .progress-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 3px 0 0;
+    font-size: 12px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .progress-input,
+.application.sheet.witcher.actor:not(.extended-sheet) .small {
+    color: var(--witcher-red-text);
+    background: transparent;
+    border: 0;
+    text-align: center;
+    font-weight: 700;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .optional-stats-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .optional-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 6px 7px;
+    background: var(--witcher-red-panel-2);
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .optional-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .optional-buttons,
+.application.sheet.witcher.actor:not(.extended-sheet) .char-button-list a,
+.application.sheet.witcher.actor:not(.extended-sheet) .char-actions a {
+    color: var(--witcher-red-text);
+    cursor: pointer;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .optional-buttons:hover,
+.application.sheet.witcher.actor:not(.extended-sheet) .char-button-list a:hover,
+.application.sheet.witcher.actor:not(.extended-sheet) .char-actions a:hover {
+    color: var(--witcher-red-accent-2);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-header-center {
+    background: var(--witcher-red-panel);
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    overflow: hidden;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-header-center h1 {
+    margin: 0;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-header-center .charname {
+    width: 100%;
+    color: var(--witcher-red-text);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--witcher-red-border);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: .02em;
+    padding: 2px 0 6px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-general {
+    display: flex;
+    gap: 12px;
+    margin-top: 7px;
+    color: var(--witcher-red-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 9px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-button-list {
+    display: flex;
+    gap: 5px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-button-list a {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 5px;
+    background: var(--witcher-red-panel-2);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .improvement-points,
+.application.sheet.witcher.actor:not(.extended-sheet) .death-section {
+    background: var(--witcher-red-panel-2);
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 5px;
+    padding: 4px 8px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .improvement-points h3,
+.application.sheet.witcher.actor:not(.extended-sheet) .death-counter h3 {
+    margin: 0;
+    color: var(--witcher-red-text);
+    font-size: 12px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .death-section {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .sheet-tabs.tabs {
+    background: var(--witcher-red-panel);
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 7px;
+    padding: 3px;
+    overflow: hidden;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .sheet-tabs.tabs a {
+    color: var(--witcher-red-muted);
+    border-radius: 4px;
+    padding: 7px 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .sheet-tabs.tabs a.active,
+.application.sheet.witcher.actor:not(.extended-sheet) .sheet-tabs.tabs a:hover {
+    color: #fff;
+    background: var(--witcher-red-accent);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .tab {
+    background: var(--witcher-red-panel);
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 8px;
+    padding: 12px;
+    overflow: auto;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .char-stat-title,
+.application.sheet.witcher.actor:not(.extended-sheet) .stat-display,
+.application.sheet.witcher.actor:not(.extended-sheet) .skill-display,
+.application.sheet.witcher.actor:not(.extended-sheet) .item,
+.application.sheet.witcher.actor:not(.extended-sheet) .inventory-item {
+    color: var(--witcher-red-text);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .stat-grid {
+    gap: 7px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .stat-display {
+    background: var(--witcher-red-panel-2);
+    border: 1px solid var(--witcher-red-border);
+    border-radius: 6px;
+    transition: transform .08s ease, border-color .08s ease, background .08s ease;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .stat-display:hover {
+    background: #252a30;
+    border-color: var(--witcher-red-accent);
+    transform: translateY(-1px);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) input,
+.application.sheet.witcher.actor:not(.extended-sheet) select,
+.application.sheet.witcher.actor:not(.extended-sheet) textarea {
+    color: var(--witcher-red-text);
+    background: #0e1012;
+    border-color: var(--witcher-red-border);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) button {
+    color: var(--witcher-red-text);
+    background: var(--witcher-red-panel-2);
+    border-color: var(--witcher-red-border);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) button:hover {
+    background: var(--witcher-red-accent);
+    border-color: var(--witcher-red-accent);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .window-header {
+    background: #0b0d0f;
+    color: var(--witcher-red-text);
+    border-bottom: 1px solid var(--witcher-red-border);
+}
