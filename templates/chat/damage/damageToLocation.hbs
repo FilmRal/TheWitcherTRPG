@@ -5,7 +5,7 @@
   <div>
     {{localize "WITCHER.Damage.totalSP"}}: <span class="error-display">
       {{{displaySP}}}
-      {{#if damageProperties.improvedArmorPiercing}}
+      {{#if properties.improvedArmorPiercing}}
         {{localize "WITCHER.Damage.improvedArmorPiercing"}}
       {{/if}}
     </span>
@@ -18,7 +18,7 @@
   </div>
   <div>
     {{localize "WITCHER.Damage.afterResistances"}}: <span class="error-display">{{{afterResistance}}}
-      {{#if (or damageProperties.improvedArmorPiercing damageProperties.armorPiercing)}}
+      {{#if (or properties.improvedArmorPiercing properties.armorPiercing)}}
         {{localize "WITCHER.Damage.armorPiercing"}}
       {{/if}}
     </span>
@@ -26,12 +26,12 @@
   <div>
     {{localize "WITCHER.Damage.totalApplied"}}: <span class="error-display">{{{finalDamage}}}</span>
   </div>
-  {{#if damageProperties.ablating}}
+  {{#if properties.ablating}}
     <div>
       {{localize "WITCHER.Damage.ablated"}}: <span class="error-display">{{{spDamage}}}</span>
     </div>
   {{/if}}
-  {{#if damageProperties.crushingForce}}
+  {{#if properties.crushingForce}}
     <div>
       {{localize "WITCHER.Damage.crushingForce"}}: <span class="error-display">{{{spDamage}}}</span>
     </div>
