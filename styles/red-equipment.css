@@ -1,0 +1,211 @@
+/* RED UI - Armor and inventory equipment cards */
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 8px;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-card {
+    overflow: hidden;
+    min-width: 0;
+    background: #171a1e;
+    border: 1px solid #343a40;
+    border-radius: 7px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.2);
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-card:hover {
+    border-color: #4a5159;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-main {
+    display: grid;
+    grid-template-columns: 58px minmax(0,1fr) auto;
+    gap: 9px;
+    align-items: center;
+    padding: 9px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-image {
+    display: block;
+    width: 58px;
+    height: 58px;
+    overflow: hidden;
+    border: 1px solid #4a5159;
+    border-radius: 5px;
+    background: #0d0f11;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-title-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-name {
+    min-width: 0;
+    overflow: hidden;
+    color: #e8edf2;
+    font-size: 14px;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    margin-top: 5px;
+    color: #8e98a3;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-parts {
+    display: flex;
+    gap: 5px;
+    color: #e8edf2;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-parts span {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    background: #101214;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-resists {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 9px;
+    border-top: 1px solid #343a40;
+    border-bottom: 1px solid #343a40;
+    background: #1d2126;
+    color: #8e98a3;
+    font-size: 9px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-resists span {
+    padding: 3px 6px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-resists b {
+    color: #e8edf2;
+    margin-right: 3px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 9px;
+    background: #171a1e;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-item-button {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    height: 29px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    background: #101214;
+    color: #e8edf2;
+    cursor: pointer;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-item-button:hover,
+.application.sheet.witcher.actor:not(.extended-sheet) .red-item-button.equipped {
+    border-color: #d43b3b;
+    color: #ff5555;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-quantity {
+    margin-left: auto;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-quantity input {
+    width: 42px;
+    height: 29px;
+    padding: 2px 4px;
+    background: #101214;
+    border: 1px solid #343a40;
+    color: #e8edf2;
+    text-align: center;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-details {
+    margin: 0 9px 9px;
+    padding: 8px;
+    background: #101214;
+    border: 1px solid #343a40;
+    border-radius: 5px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-details.invisible {
+    display: none;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-details:not(.invisible) {
+    display: block;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-details .item-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-details .item-tag {
+    padding: 4px 6px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    background: #242a30;
+    color: #8e98a3;
+    font-size: 9px;
+}
+
+.application.sheet.witcher.actor:not(.extended-sheet) .red-armor-details h3 {
+    margin: 8px 0 3px;
+    color: #e8edf2;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+    .application.sheet.witcher.actor:not(.extended-sheet) .red-armor-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .application.sheet.witcher.actor:not(.extended-sheet) .red-armor-main {
+        grid-template-columns: 48px minmax(0,1fr);
+    }
+
+    .application.sheet.witcher.actor:not(.extended-sheet) .red-armor-image {
+        width: 48px;
+        height: 48px;
+    }
+
+    .application.sheet.witcher.actor:not(.extended-sheet) .red-armor-parts {
+        grid-column: 1 / -1;
+    }
+}
