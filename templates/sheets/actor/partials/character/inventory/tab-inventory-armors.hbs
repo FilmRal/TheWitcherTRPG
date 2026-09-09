@@ -2,90 +2,50 @@
     <summary class="list-header armor-header">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs" header=header itemType=itemType hasReliability=hasReliability}}
     </summary>
-    <ol class="list item-table item-list">
+    <ol class="list item-table item-list red-armor-cards">
         {{#each armors as |armor id|}}
-            <li class="item list-item draggable" data-item-id="{{armor.id}}">
-                <div class="list-details armor-details">
-                    <a class="item-display-info display-details">
-                        <img class="item-image item-list-image" src="{{armor.img}}">
-                        <span class="item-image item-list-image"
-                            data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
-                            <i class="fa-solid fa-book"></i>
-                        </span>
+            <li class="item list-item draggable red-armor-card" data-item-id="{{armor.id}}">
+                <div class="red-armor-main">
+                    <a class="item-display-info display-details red-armor-image">
+                        <img src="{{armor.img}}" alt="{{armor.name}}">
                     </a>
-                    <div><a class="item-roll">{{armor.name}}</a></div>
-                    <div class="list-label">
-                        <span>
-                            {{#each (armorPartsInfo armor.system) as |part|}}
-                                <span class="armor-part-icon" data-tooltip="{{part.tooltip}}">
-                                    <i class="fa-solid {{part.icon}}" style="color: {{part.color}};"></i>
-                                </span>
-                            {{/each}}
-                        </span>
-
-                        <span><input class="inline-edit item-quantity" data-field="system.quantity" type="text"
-                                value="{{armor.system.quantity}}" data-dtype="Number" /></span>
-
-                        <span class="list-controls">
-                            <a class="item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
-                                <i class="fa-regular fa-message"></i></a>
-                            <a class="item-equip {{#if armor.system.equipped}}equipped{{/if}}" data-tooltip="{{#if armor.system.equipped}}
-                                {{localize 'WITCHER.Item.Equipped'}}
-                            {{else}}
-                                {{localize 'WITCHER.Item.NotEquipped'}}
-                            {{/if}}">
-                                <i class="{{#if armor.system.equipped}}fa-solid{{else}}fa-regular{{/if}} fa-shield"></i>
-                            </a>
-                            {{#if armor.system.canBeRepaired}}
-                                <a class="item-repair" data-tooltip="{{localize 'WITCHER.Repair.buttons.repair'}}"><i
-                                        class="fas fa-screwdriver-wrench"></i></a>
-                            {{/if}}
-                        </span>
+                    <div class="red-armor-info">
+                        <div class="red-armor-title-row">
+                            <a class="item-roll red-armor-name">{{armor.name}}</a>
+                            {{#if armor.system.equipped}}<span class="red-equipped">EQUIPPED</span>{{/if}}
+                        </div>
+                        <div class="red-armor-tags">
+                            {{#if armor.system.type}}<span>{{armor.system.type}}</span>{{/if}}
+                            {{#if armor.system.encumb}}<span>ENC {{armor.system.encumb}}</span>{{/if}}
+                            <span>WT {{armor.system.weight}}</span>
+                            <span>x{{armor.system.quantity}}</span>
+                        </div>
+                    </div>
+                    <div class="red-armor-parts">
+                        {{#each (armorPartsInfo armor.system) as |part|}}
+                            <span data-tooltip="{{part.tooltip}}"><i class="fa-solid {{part.icon}}" style="color: {{part.color}};"></i></span>
+                        {{/each}}
                     </div>
                 </div>
-                <div class="invisible item-info list-item-info">
+                <div class="red-armor-resists">
+                    {{#if armor.system.resistance.slashing}}<span><b>SLASH</b> {{armor.system.resistance.slashing}}</span>{{/if}}
+                    {{#if armor.system.resistance.piercing}}<span><b>PIERCE</b> {{armor.system.resistance.piercing}}</span>{{/if}}
+                    {{#if armor.system.resistance.bludgeoning}}<span><b>BLUNT</b> {{armor.system.resistance.bludgeoning}}</span>{{/if}}
+                </div>
+                <div class="red-armor-actions">
+                    <a class="red-item-button item-equip {{#if armor.system.equipped}}equipped{{/if}}" data-tooltip="{{#if armor.system.equipped}}{{localize 'WITCHER.Item.Equipped'}}{{else}}{{localize 'WITCHER.Item.NotEquipped'}}{{/if}}"><i class="{{#if armor.system.equipped}}fa-solid{{else}}fa-regular{{/if}} fa-shield"></i></a>
+                    <a class="red-item-button item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}"><i class="fa-regular fa-message"></i></a>
+                    {{#if armor.system.canBeRepaired}}<a class="red-item-button item-repair" data-tooltip="{{localize 'WITCHER.Repair.buttons.repair'}}"><i class="fas fa-screwdriver-wrench"></i></a>{{/if}}
+                    <a class="red-item-button item-display-info" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}"><i class="fa-solid fa-circle-info"></i></a>
+                    <span class="red-armor-quantity"><input class="inline-edit item-quantity" data-field="system.quantity" type="text" value="{{armor.system.quantity}}" data-dtype="Number" /></span>
+                </div>
+                <div class="invisible item-info list-item-info red-armor-details">
                     <div class="item-tags">
-                        {{#if armor.system.type}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
-                                <i class="fa-solid fa-shield-halved"></i>
-                                {{armor.system.type}}
-                            </span>
-                        {{/if}}
-                        {{#if armor.system.resistance.slashing}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.DamageType.slashing"}}">
-                                <i class="fa-solid fa-maximize"></i>
-                                {{localize "WITCHER.DamageType.slashing"}}
-                            </span>
-                        {{/if}}
-                        {{#if armor.system.resistance.piercing}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.DamageType.piercing"}}">
-                                <i class="fa-solid fa-maximize"></i>
-                                {{localize "WITCHER.DamageType.piercing"}}
-                            </span>
-                        {{/if}}
-                        {{#if armor.system.resistance.bludgeoning}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.DamageType.bludgeoning"}}">
-                                <i class="fa-solid fa-maximize"></i>
-                                {{localize "WITCHER.DamageType.bludgeoning"}}
-                            </span>
-                        {{/if}}
-                        {{#if armor.system.encumb}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Armor.EncumbranceValue"}}">
-                                <i class="fa-solid fa-person-hiking"></i>
-                                {{armor.system.encumb}}
-                            </span>
-                        {{/if}}
-                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
-                            <i class="fa-solid fa-weight-hanging"></i>
-                            {{armor.system.weight}}
-                        </span>
+                        {{#if armor.system.type}}<span class="item-tag"><i class="fa-solid fa-shield-halved"></i> {{armor.system.type}}</span>{{/if}}
+                        <span class="item-tag"><i class="fa-solid fa-weight-hanging"></i> {{armor.system.weight}}</span>
+                        {{#if armor.system.encumb}}<span class="item-tag"><i class="fa-solid fa-person-hiking"></i> {{armor.system.encumb}}</span>{{/if}}
                     </div>
-                    {{#if armor.system.description}}
-                        <div class="list-item-description">
-                            <h3>{{localize "WITCHER.Item.Description"}}</h3>
-                            {{armor.system.description}}
-                        </div>
-                    {{/if}}
+                    {{#if armor.system.description}}<div class="list-item-description"><h3>{{localize "WITCHER.Item.Description"}}</h3>{{armor.system.description}}</div>{{/if}}
                     {{#unless (eq type "enhancement")}}
                         {{#if (or armor.system.enhancementItems.length armor.system.freeEnhancements.length)}}
                             <div class="weapon-enhancements">
@@ -93,40 +53,16 @@
                                 <div class="enhancement-list">
                                     {{#each armor.system.enhancementItems as |enhancement id|}}
                                         <div class="item weapon-enhancement" data-item-id="{{enhancement.id}}">
-                                            <div class="enhancement-label">
-                                                <img class="enhancement-img no-margin" src="{{enhancement.img}}" />
-                                                <span class="">{{enhancement.name}}</span>
-                                            </div>
-                                            <div class="enhancement-info invisible">
-                                                <div class="item-tags">
-                                                    {{#each enhancement.system.effects as |effects|}}
-                                                        {{#if (gt effects.percentage 0)}}
-                                                            <div class="item-tag">
-                                                                {{effects.statusEffect}}
-                                                                {{effects.percentage}}%
-                                                            </div>
-                                                        {{/if}}
-                                                    {{/each}}
-                                                </div>
-                                                <div class="enhancement-effects-name">
-                                                    {{#each enhancement.system.effects as |effects|}}
-                                                        {{effects.name}}
-                                                    {{/each}}
-                                                </div>
-                                            </div>
+                                            <div class="enhancement-label"><img class="enhancement-img no-margin" src="{{enhancement.img}}" /><span>{{enhancement.name}}</span></div>
+                                            <div class="enhancement-info invisible"><div class="item-tags">{{#each enhancement.system.effects as |effects|}}{{#if (gt effects.percentage 0)}}<div class="item-tag">{{effects.statusEffect}} {{effects.percentage}}%</div>{{/if}}{{/each}}</div><div class="enhancement-effects-name">{{#each enhancement.system.effects as |effects|}}{{effects.name}}{{/each}}</div></div>
                                         </div>
                                     {{/each}}
                                     {{#each armor.system.freeEnhancements}}
-                                        <a class="enhancement-label enhancement-weapon-slot">
-                                            <div class="enhancement-slot">
-                                            </div>
-                                            <span>{{localize 'WITCHER.Item.equipEnhancement'}}</span>
-                                        </a>
+                                        <a class="enhancement-label enhancement-armor-slot"><div class="enhancement-slot"></div><span>{{localize 'WITCHER.Item.equipEnhancement'}}</span></a>
                                     {{/each}}
                                 </div>
                             </div>
                         {{/if}}
-
                     {{/unless}}
                 </div>
             </li>
