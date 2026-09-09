@@ -25,15 +25,15 @@
 
                 <div class="red-inventory-actions">
                     {{#if valuable.isConsumable}}
-                        <a class="item-consume red-inventory-button red-primary" data-tooltip="Consume {{valuable.name}}">
-                            <i class="fa-solid fa-bottle-droplet"></i> {{localize "WITCHER.Item.consume"}}
+                        <a class="item-roll red-inventory-button red-primary" data-tooltip="Consume {{valuable.name}}">
+                            <i class="fa-solid fa-bottle-droplet"></i> CONSUME
                         </a>
                     {{/if}}
                     <a class="item-display-info red-inventory-button" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
-                        <i class="fa-solid fa-magnifying-glass"></i> {{localize "WITCHER.Item.inspect"}}
+                        <i class="fa-solid fa-magnifying-glass"></i> INSPECT
                     </a>
                     <a class="item-chat red-inventory-button" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
-                        <i class="fa-regular fa-message"></i> {{localize "WITCHER.Item.sendToChat"}}
+                        <i class="fa-regular fa-message"></i> CHAT
                     </a>
                     <a class="item-carried red-inventory-button red-carried {{#if valuable.system.isCarried}}equipped{{/if}}"
                         data-tooltip="{{#if valuable.system.isCarried}}{{localize 'WITCHER.Item.Carried'}}{{else}}{{localize 'WITCHER.Item.notCarried'}}{{/if}}">
@@ -45,16 +45,10 @@
                 <div class="invisible item-info red-inventory-details">
                     <div class="item-tags">
                         {{#if valuable.system.avail}}
-                            <span class="item-tag">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                {{localize (lookup ../config.Availability valuable.system.avail)}}
-                            </span>
+                            <span class="item-tag"><i class="fa-solid fa-magnifying-glass"></i> {{localize (lookup ../config.Availability valuable.system.avail)}}</span>
                         {{/if}}
                         {{#if valuable.system.conceal}}
-                            <span class="item-tag">
-                                <i class="fa-solid fa-eye-slash"></i>
-                                {{localize (lookup ../config.Concealment valuable.system.conceal)}}
-                            </span>
+                            <span class="item-tag"><i class="fa-solid fa-eye-slash"></i> {{localize (lookup ../config.Concealment valuable.system.conceal)}}</span>
                         {{/if}}
                         {{#if valuable.system.weight}}
                             <span class="item-tag"><i class="fa-solid fa-weight-hanging"></i> {{valuable.system.weight}}</span>
