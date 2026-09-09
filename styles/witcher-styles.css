@@ -42,10 +42,11 @@
 @import './red-equipment.css';
 @import './red-inventory.css';
 @import './red-chat.css';
+@import './red-monster.css';
 
 @font-face {
     font-family: 'Thewitcher';
-    src: url('./fonts/thewitcher2.ttf');
+    src: url('./fonts/fonts/thewitcher2.ttf');
 }
 
 .witcher-style {
