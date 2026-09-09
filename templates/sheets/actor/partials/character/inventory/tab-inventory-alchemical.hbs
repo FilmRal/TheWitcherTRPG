@@ -25,7 +25,7 @@
 
                 <div class="red-inventory-actions">
                     {{#if alchemical.isConsumable}}
-                        <a class="item-consume red-inventory-button red-primary" data-tooltip="Consume {{alchemical.name}}">
+                        <a class="item-roll red-inventory-button red-primary" data-tooltip="Consume {{alchemical.name}}">
                             <i class="fa-solid fa-bottle-droplet"></i> CONSUME
                         </a>
                     {{/if}}
@@ -44,22 +44,22 @@
                         {{/if}}
                         {{#if alchemical.system.alchemyDC}}
                             <span class="item-tag"><i class="fa-solid fa-dice-d20"></i> DC {{alchemical.system.alchemyDC}}</span>
-                        {{/if}}
+                        {{/if}
                         {{#if alchemical.system.avail}}
                             <span class="item-tag"><i class="fa-solid fa-magnifying-glass"></i> {{localize (lookup ../config.Availability alchemical.system.avail)}}</span>
-                        {{/if}}
+                        {{/if}
                         {{#if alchemical.system.time}}
                             <span class="item-tag"><i class="fa-solid fa-hourglass-half"></i> {{alchemical.system.time}}</span>
-                        {{/if}}
+                        {{/if}
                         {{#if alchemical.system.weight}}
                             <span class="item-tag"><i class="fa-solid fa-weight-hanging"></i> {{alchemical.system.weight}}</span>
-                        {{/if}}
+                        {{/if}
                         {{#if alchemical.system.cost}}
                             <span class="item-tag"><i class="fa-solid fa-coins"></i> {{alchemical.system.cost}}</span>
-                        {{/if}}
+                        {{/if}
                         {{#if alchemical.system.toxicity}}
                             <span class="item-tag"><i class="fa-solid fa-skull-crossbones"></i> {{alchemical.system.toxicity}}</span>
-                        {{/if}}
+                        {{/if}
                     </div>
 
                     {{#if alchemical.system.effect}}
