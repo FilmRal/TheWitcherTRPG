@@ -40,6 +40,7 @@
 @import './red-combat.css';
 @import './red-magic.css';
 @import './red-equipment.css';
+@import './red-inventory.css';
 
 @font-face {
     font-family: 'Thewitcher';
@@ -78,4 +79,3 @@
 
 .grid {
     display: grid;
-}
