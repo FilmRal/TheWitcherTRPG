@@ -1,10 +1,220 @@
 /* RED UI - Magic / Signs */
 
-.red-magic-grid {
+/* The existing Witcher spell handlers are intentionally preserved. These rules turn
+ * the existing spell list into a compact RED-style casting interface without
+ * introducing a second casting implementation. */
+.spell-section .item-list,
+.magic-section .item-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
+    gap: 10px;
+    margin: 0;
     padding: 10px 0;
+}
+
+.spell-section .item-list > .item,
+.magic-section .item-list > .item {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--witcher-red-border, #343a40);
+    border-radius: var(--witcher-red-radius, 7px);
+    background: var(--witcher-red-panel, #171a1e);
+    box-shadow: var(--witcher-red-shadow, 0 5px 20px rgba(0,0,0,.28));
+    list-style: none;
+}
+
+.spell-section .item-list > .item:hover,
+.magic-section .item-list > .item:hover {
+    border-color: var(--witcher-red-border-strong, #4a5159);
+}
+
+.spell-details {
+    display: grid !important;
+    grid-template-columns: 52px minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    min-height: 72px;
+    padding: 10px;
+}
+
+.spell-details .item-display-info {
+    display: block;
+    width: 52px;
+    height: 52px;
+}
+
+.spell-details .item-list-image {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border: 1px solid var(--witcher-red-border-strong, #4a5159);
+    border-radius: 5px;
+    background: #0d0f11;
+}
+
+.spell-details > div:nth-child(2) {
+    min-width: 0;
+}
+
+.spell-details .spell-roll {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 7px 10px;
+    color: var(--witcher-red-text, #e8edf2) !important;
+    font-size: .9rem;
+    font-weight: 800;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.spell-details .spell-roll::before {
+    content: '\f0c3';
+    margin-right: 7px;
+    color: var(--witcher-red-accent-2, #ff5555);
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+.spell-details .list-label {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    min-width: 74px;
+    color: var(--witcher-red-warning, #d9a441);
+    font-size: .72rem;
+    font-weight: 800;
+    text-align: right;
+}
+
+.spell-details .list-label > span:first-child {
+    padding: 3px 6px;
+    border: 1px solid var(--witcher-red-border, #343a40);
+    border-radius: 4px;
+    background: var(--witcher-red-panel-3, #242a30);
+}
+
+.spell-details .list-controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.spell-details .item-chat {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--witcher-red-border, #343a40);
+    border-radius: 5px;
+    background: var(--witcher-red-panel-3, #242a30);
+    color: var(--witcher-red-muted, #8e98a3) !important;
+}
+
+.spell-details .item-chat:hover {
+    color: var(--witcher-red-text, #e8edf2) !important;
+}
+
+.spell-section .item-info,
+.magic-section .item-info {
+    padding: 0 10px 10px;
+    border-top: 1px solid var(--witcher-red-border, #343a40);
+    background: rgba(0,0,0,.08);
+}
+
+.spell-section .item-info.invisible,
+.magic-section .item-info.invisible {
+    display: none;
+}
+
+.spell-section .item-info:not(.invisible),
+.magic-section .item-info:not(.invisible) {
+    display: block;
+}
+
+.spell-section .item-info .item-tags,
+.magic-section .item-info .item-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-top: 9px;
+}
+
+.spell-section .item-info .item-tag,
+.magic-section .item-info .item-tag {
+    padding: 4px 6px;
+    border: 1px solid var(--witcher-red-border, #343a40);
+    border-radius: 4px;
+    background: var(--witcher-red-panel-3, #242a30);
+    color: var(--witcher-red-muted, #8e98a3);
+    font-size: .68rem;
+}
+
+.spell-section .list-item-description,
+.spell-section .list-item-side-effect,
+.spell-section .list-item-requirements,
+.spell-section .list-item-components,
+.magic-section .list-item-description,
+.magic-section .list-item-side-effect,
+.magic-section .list-item-requirements,
+.magic-section .list-item-components {
+    margin-top: 8px;
+    color: var(--witcher-red-muted, #8e98a3);
+    font-size: .77rem;
+    line-height: 1.45;
+}
+
+.spell-section .item-info h3,
+.magic-section .item-info h3 {
+    margin: 8px 0 3px;
+    color: var(--witcher-red-text, #e8edf2);
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+/* Focus / Vigor management keeps the original editable fields but presents them
+ * as compact resource cards. */
+.magic-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    padding: 12px;
+}
+
+.magic-info .value-max-stat-display,
+.magic-info .focus-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--witcher-red-border, #343a40);
+    border-radius: 6px;
+    background: var(--witcher-red-panel, #171a1e);
+}
+
+.magic-info .value-max-stat-display {
+    grid-column: 1 / -1;
+    flex-wrap: wrap;
+}
+
+.magic-info label {
+    color: var(--witcher-red-muted, #8e98a3);
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.magic-info .focus {
+    flex: 1;
+    min-width: 0;
+}
+
+.magic-info .focus-value {
+    max-width: 85px;
 }
 
 .red-magic-section {
@@ -20,198 +230,32 @@
     border-left: 3px solid var(--witcher-red-accent, #d43b3b);
     background: var(--witcher-red-panel-2, #1d2126);
     color: var(--witcher-red-text, #e8edf2);
-    font-size: 0.82rem;
+    font-size: .82rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .08em;
 }
 
-.red-magic-card {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    overflow: hidden;
-    border: 1px solid var(--witcher-red-border, #343a40);
-    border-radius: var(--witcher-red-radius, 7px);
-    background: var(--witcher-red-panel, #171a1e);
-    box-shadow: var(--witcher-red-shadow, 0 5px 20px rgba(0,0,0,.28));
-}
-
-.red-magic-card:hover {
-    border-color: var(--witcher-red-border-strong, #4a5159);
-}
-
-.red-magic-main {
-    display: grid;
-    grid-template-columns: 52px minmax(0, 1fr) auto;
-    gap: 10px;
-    align-items: center;
-    padding: 10px;
-}
-
-.red-magic-icon {
-    width: 52px;
-    height: 52px;
-    object-fit: cover;
-    border: 1px solid var(--witcher-red-border-strong, #4a5159);
-    border-radius: 5px;
-    background: #0d0f11;
-}
-
-.red-magic-name {
-    min-width: 0;
-    color: var(--witcher-red-text, #e8edf2);
-    font-size: .95rem;
-    font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.red-magic-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 5px;
-}
-
-.red-magic-cost {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 6px;
-    border: 1px solid var(--witcher-red-border, #343a40);
-    border-radius: 4px;
-    background: var(--witcher-red-panel-3, #242a30);
-    color: var(--witcher-red-warning, #d9a441);
-    font-size: .72rem;
-    font-weight: 700;
-}
-
-.red-magic-cost-label {
-    color: var(--witcher-red-muted, #8e98a3);
-    font-weight: 500;
-}
-
-.red-cast-button {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    min-width: 92px;
-    padding: 8px 10px !important;
-    border: 1px solid var(--witcher-red-accent, #d43b3b) !important;
-    border-radius: 5px;
-    background: var(--witcher-red-accent, #d43b3b) !important;
-    color: #fff !important;
-    font-size: .72rem;
-    font-weight: 800;
-    letter-spacing: .06em;
-    text-decoration: none !important;
-    text-align: center;
-    cursor: pointer;
-}
-
-.red-cast-button:hover {
-    background: var(--witcher-red-accent-2, #ff5555) !important;
-    border-color: var(--witcher-red-accent-2, #ff5555) !important;
-}
-
-.red-magic-actions {
-    display: flex;
-    gap: 5px;
-}
-
-.red-magic-icon-button {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--witcher-red-border, #343a40);
-    border-radius: 5px;
-    background: var(--witcher-red-panel-3, #242a30);
-    color: var(--witcher-red-muted, #8e98a3) !important;
-    text-decoration: none !important;
-}
-
-.red-magic-icon-button:hover {
-    color: var(--witcher-red-text, #e8edf2) !important;
-    border-color: var(--witcher-red-border-strong, #4a5159);
-}
-
-.red-magic-details {
-    padding: 0 10px 10px;
-    border-top: 1px solid var(--witcher-red-border, #343a40);
-    background: rgba(0,0,0,.08);
-}
-
-.red-magic-details .item-tags {
-    padding-top: 9px;
-}
-
-.red-magic-description {
-    margin-top: 8px;
-    color: var(--witcher-red-muted, #8e98a3);
-    font-size: .78rem;
-    line-height: 1.45;
-}
-
-.red-magic-description h3 {
-    margin: 8px 0 3px;
-    color: var(--witcher-red-text, #e8edf2);
-    font-size: .7rem;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-}
-
-.red-focus-panel {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 10px;
-    padding: 12px;
-}
-
-.red-focus-stat,
-.red-focus-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 42px;
-    padding: 8px 10px;
-    border: 1px solid var(--witcher-red-border, #343a40);
-    border-radius: 6px;
-    background: var(--witcher-red-panel, #171a1e);
-}
-
-.red-focus-stat label {
-    color: var(--witcher-red-muted, #8e98a3);
-    font-size: .7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.red-focus-stat input,
-.red-focus-item input {
-    min-width: 0;
-}
-
-.red-focus-item .focus {
-    flex: 1;
-}
-
 @media (max-width: 760px) {
-    .red-magic-main {
+    .spell-details {
         grid-template-columns: 44px minmax(0, 1fr);
     }
 
-    .red-magic-icon {
+    .spell-details .item-display-info,
+    .spell-details .item-list-image {
         width: 44px;
         height: 44px;
     }
 
-    .red-cast-button {
+    .spell-details .list-label {
         grid-column: 1 / -1;
-        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .spell-details .list-controls {
+        justify-content: flex-end;
     }
 }
