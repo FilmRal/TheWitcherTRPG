@@ -1,14 +1,17 @@
 <section class="chat-item-description">
-    <header class="chat-item-header">
+    <header class="red-chat-header">
         <img src="{{item.img}}" alt="">
-        <h4>{{item.name}}</h4>
+        <div>
+            <h4 class="red-chat-title">{{item.name}}</h4>
+            <div class="red-chat-type">{{localize (concat "TYPES.Item." item.type)}}</div>
+        </div>
     </header>
-    <div class="chat-description">
+    <div class="chat-description red-chat-body">
         {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/description.hbs"}}
         {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/spell-description.hbs"}}
         {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/alchemicals.hbs"}}
     </div>
-    <div class="chat-components">
+    <div class="chat-components red-chat-body">
         {{> "systems/TheWitcherTRPG/templates/chat/item/partials/item-description/crafting-items.hbs"}}
     </div>
     <footer class="chat-item-tags item-tags">
