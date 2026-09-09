@@ -36,12 +36,12 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
             template: 'systems/TheWitcherTRPG/templates/partials/character/tab-skills.hbs',
             scrollable: ['']
         },
-        profession: {
-            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/tab-profession.hbs',
-            scrollable: ['']
-        },
         combat: {
             template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/tab-combat.hbs',
+            scrollable: ['']
+        },
+        profession: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/tab-profession.hbs',
             scrollable: ['']
         },
         inventory: {
@@ -123,6 +123,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
         context.magicTabs = this._prepareTabs('magicTabs');
         context.detailTabs = this._prepareTabs('detailTabs');
         context.defenseOptions = CONFIG.WITCHER.defenseOptions ?? [];
+        context.combatAbilities = context.items.filter(item => ['spell', 'hex', 'ritual'].includes(item.type));
 
         context.systemFields = this.document.system.schema.fields;
         context.enrichedText = {
