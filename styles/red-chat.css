@@ -1,0 +1,221 @@
+/* RED UI - Witcher chat cards */
+.chat-message .chat-item-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: -4px;
+    padding: 10px;
+    color: #e8edf2;
+    background: #171a1e;
+    border: 1px solid #343a40;
+    border-radius: 7px;
+}
+
+.chat-message .red-chat-header {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 9px;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #343a40;
+}
+
+.chat-message .red-chat-header img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border: 1px solid #4a5159;
+    border-radius: 5px;
+    background: #101214;
+}
+
+.chat-message .red-chat-title {
+    margin: 0;
+    color: #e8edf2;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.chat-message .red-chat-type {
+    margin-top: 3px;
+    color: #8e98a3;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.chat-message .red-chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #c3cbd3;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.chat-message .red-chat-section {
+    padding: 7px 8px;
+    background: #101214;
+    border: 1px solid #343a40;
+    border-radius: 5px;
+}
+
+.chat-message .red-chat-section-title {
+    margin: 0 0 4px;
+    color: #ff5555;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.chat-message .red-chat-label {
+    color: #8e98a3;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.chat-message .red-chat-value {
+    color: #e8edf2;
+    font-weight: 700;
+}
+
+.chat-message .red-chat-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.chat-message .red-chat-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    background: #242a30;
+    color: #c3cbd3;
+    font-size: 9px;
+}
+
+.chat-message .red-chat-tag i {
+    color: #ff5555;
+}
+
+.chat-message .red-chat-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.chat-message .red-chat-actions button,
+.chat-message .red-chat-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 4px 9px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    background: #101214;
+    color: #e8edf2;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.chat-message .red-chat-actions button:hover,
+.chat-message .red-chat-actions a:hover {
+    border-color: #d43b3b;
+    color: #ff5555;
+}
+
+.chat-message .red-chat-actions .damage,
+.chat-message .red-chat-actions .heal,
+.chat-message .red-chat-actions .shield {
+    border-color: #7c3030;
+    background: #2a1719;
+    color: #ff5555;
+}
+
+.chat-message .red-chat-effect {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 0;
+}
+
+.chat-message .red-chat-effect img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.chat-message .red-chat-effect .apply-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #e8edf2;
+}
+
+.chat-message .red-chat-effect .apply-status:hover {
+    color: #ff5555;
+}
+
+.chat-message .chat-item-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0;
+    padding-top: 7px;
+    border-top: 1px solid #343a40;
+}
+
+.chat-message .chat-item-tags .item-tag {
+    padding: 4px 6px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    background: #242a30;
+    color: #8e98a3;
+    font-size: 9px;
+}
+
+.chat-message .chat-item-tags .item-tag b {
+    color: #e8edf2;
+}
+
+.chat-message .percentageFailed,
+.chat-message .percentageSuccess,
+.chat-message .center-important {
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+}
+
+.chat-message .percentageFailed {
+    background: #351719;
+    color: #ff7777;
+}
+
+.chat-message .percentageSuccess {
+    background: #173021;
+    color: #73d39b;
+}
+
+.chat-message .center-important {
+    background: #2a1719;
+    color: #ff7777;
+}
+
+@media (max-width: 500px) {
+    .chat-message .chat-item-description {
+        padding: 8px;
+    }
+}
