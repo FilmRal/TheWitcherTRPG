@@ -43,6 +43,7 @@
 @import './red-inventory.css';
 @import './red-chat.css';
 @import './red-monster.css';
+@import './red-monster-combat.css';
 
 @font-face {
     font-family: 'Thewitcher';
@@ -81,3 +82,4 @@
 
 .grid {
     display: grid;
+}
