@@ -1,233 +1,43 @@
 /* RED UI - General inventory, consumable and crafting cards */
 
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 8px;
-    margin: 8px 0 0;
-    padding: 0;
-    list-style: none;
-}
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px; margin: 8px 0 0; padding: 0; list-style: none; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-card { overflow: hidden; min-width: 0; background: #171a1e; border: 1px solid #343a40; border-radius: 7px; box-shadow: 0 3px 12px rgba(0,0,0,.2); }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-card:hover { border-color: #4a5159; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-main { display: grid; grid-template-columns: 52px minmax(0,1fr) auto; gap: 9px; align-items: center; padding: 9px; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-image { display: block; width: 52px; height: 52px; overflow: hidden; border: 1px solid #4a5159; border-radius: 5px; background: #0d0f11; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-title { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-name { overflow: hidden; min-width: 0; color: #e8edf2; font-size: 13px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-type { margin-top: 4px; color: #8e98a3; font-size: 9px; text-transform: uppercase; letter-spacing: .04em; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-stack { display: flex; align-items: center; gap: 4px; margin-left: auto; color: #8e98a3; font-size: 9px; white-space: nowrap; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-stack input { width: 42px; height: 28px; padding: 2px 4px; border: 1px solid #343a40; border-radius: 4px; background: #101214; color: #e8edf2; text-align: center; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; padding: 6px 9px; border-top: 1px solid #343a40; background: #171a1e; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-width: 30px; height: 29px; padding: 0 8px; border: 1px solid #343a40; border-radius: 4px; background: #101214; color: #e8edf2; cursor: pointer; font-size: 9px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button:hover { border-color: #d43b3b; color: #ff5555; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button.red-primary { border-color: #7c3030; background: #2a1719; color: #ff5555; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button.red-primary:hover { border-color: #ff5555; background: #381b1d; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button.red-carried.equipped { border-color: #d9a441; color: #d9a441; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details { margin: 0 9px 9px; padding: 8px; border: 1px solid #343a40; border-radius: 5px; background: #101214; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details.invisible { display: none; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details:not(.invisible) { display: block; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details .item-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details .item-tag { padding: 4px 6px; border: 1px solid #343a40; border-radius: 4px; background: #242a30; color: #8e98a3; font-size: 9px; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details .item-tag b { color: #e8edf2; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details h3 { margin: 8px 0 3px; color: #e8edf2; font-size: 9px; text-transform: uppercase; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-description { color: #c3cbd3; font-size: 11px; line-height: 1.4; }
+.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-empty { padding: 12px; color: #8e98a3; font-size: 11px; text-align: center; }
 
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-card {
-    overflow: hidden;
-    min-width: 0;
-    background: #171a1e;
-    border: 1px solid #343a40;
-    border-radius: 7px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.2);
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-card:hover {
-    border-color: #4a5159;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-main {
-    display: grid;
-    grid-template-columns: 52px minmax(0,1fr) auto;
-    gap: 9px;
-    align-items: center;
-    padding: 9px;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-image {
-    display: block;
-    width: 52px;
-    height: 52px;
-    overflow: hidden;
-    border: 1px solid #4a5159;
-    border-radius: 5px;
-    background: #0d0f11;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-title {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    min-width: 0;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-name {
-    overflow: hidden;
-    min-width: 0;
-    color: #e8edf2;
-    font-size: 13px;
-    font-weight: 800;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-type {
-    margin-top: 4px;
-    color: #8e98a3;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-quantity {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #8e98a3;
-    font-size: 9px;
-    text-transform: uppercase;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-quantity input {
-    width: 42px;
-    height: 28px;
-    padding: 2px 4px;
-    border: 1px solid #343a40;
-    border-radius: 4px;
-    background: #101214;
-    color: #e8edf2;
-    text-align: center;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 5px;
-    padding: 6px 9px;
-    border-top: 1px solid #343a40;
-    background: #171a1e;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    min-width: 30px;
-    height: 29px;
-    padding: 0 8px;
-    border: 1px solid #343a40;
-    border-radius: 4px;
-    background: #101214;
-    color: #e8edf2;
-    cursor: pointer;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: .03em;
-    text-transform: uppercase;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button:hover {
-    border-color: #d43b3b;
-    color: #ff5555;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button.red-primary {
-    border-color: #7c3030;
-    background: #2a1719;
-    color: #ff5555;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button.red-primary:hover {
-    border-color: #ff5555;
-    background: #381b1d;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-button.red-carried.equipped {
-    border-color: #d9a441;
-    color: #d9a441;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details {
-    margin: 0 9px 9px;
-    padding: 8px;
-    border: 1px solid #343a40;
-    border-radius: 5px;
-    background: #101214;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details.invisible {
-    display: none;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details:not(.invisible) {
-    display: block;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details .item-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details .item-tag {
-    padding: 4px 6px;
-    border: 1px solid #343a40;
-    border-radius: 4px;
-    background: #242a30;
-    color: #8e98a3;
-    font-size: 9px;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details .item-tag b {
-    color: #e8edf2;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-details h3 {
-    margin: 8px 0 3px;
-    color: #e8edf2;
-    font-size: 9px;
-    text-transform: uppercase;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-description {
-    color: #c3cbd3;
-    font-size: 11px;
-    line-height: 1.4;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-stack {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-left: auto;
-    color: #8e98a3;
-    font-size: 9px;
-    white-space: nowrap;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-empty {
-    padding: 12px;
-    color: #8e98a3;
-    font-size: 11px;
-    text-align: center;
-}
-
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-section > .list-header,
-.application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-section > .valuable-list-header {
-    margin-bottom: 0;
-}
+/* Alchemical substance quick-select cards. Existing click behaviour is preserved. */
+.application.sheet.witcher.actor:not(.extended-sheet) .substances-menu { display: grid; grid-template-columns: repeat(9, minmax(55px, 1fr)); gap: 6px; padding: 8px; border: 1px solid #343a40; border-radius: 7px; background: #171a1e; }
+.application.sheet.witcher.actor:not(.extended-sheet) .substances-item { display: grid; grid-template-rows: 38px auto; place-items: center; gap: 4px; min-width: 0; padding: 6px 3px; border: 1px solid #343a40; border-radius: 5px; background: #101214; color: #e8edf2; transition: border-color .12s ease, background .12s ease; }
+.application.sheet.witcher.actor:not(.extended-sheet) .substances-item:hover, .application.sheet.witcher.actor:not(.extended-sheet) .substances-item.sub-open { border-color: #d43b3b; background: #1d2126; }
+.application.sheet.witcher.actor:not(.extended-sheet) .substances-item .substance-img { width: 34px; height: 34px; object-fit: contain; border: 0; cursor: pointer; }
+.application.sheet.witcher.actor:not(.extended-sheet) .substances-item > span { color: #d9a441; font-size: 11px; font-weight: 800; }
 
 @media (max-width: 760px) {
-    .application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-main {
-        grid-template-columns: 44px minmax(0,1fr);
-    }
-
-    .application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-image {
-        width: 44px;
-        height: 44px;
-    }
-
-    .application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-stack {
-        grid-column: 2;
-        margin-left: 0;
-    }
+    .application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-cards { grid-template-columns: 1fr; }
+    .application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-main { grid-template-columns: 44px minmax(0,1fr); }
+    .application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-image { width: 44px; height: 44px; }
+    .application.sheet.witcher.actor:not(.extended-sheet) .red-inventory-stack { grid-column: 2; margin-left: 0; }
+    .application.sheet.witcher.actor:not(.extended-sheet) .substances-menu { grid-template-columns: repeat(3, 1fr); }
 }
