@@ -26,7 +26,6 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
             template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/header.hbs'
         },
         tabs: {
-            // Foundry-provided generic template
             template: 'templates/generic/tab-navigation.hbs'
         },
         stats: {
@@ -39,6 +38,10 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
         },
         profession: {
             template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/tab-profession.hbs',
+            scrollable: ['']
+        },
+        combat: {
+            template: 'systems/TheWitcherTRPG/templates/sheets/actor/partials/monster/tabs/tab-combat.hbs',
             scrollable: ['']
         },
         inventory: {
@@ -64,13 +67,14 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
             tabs: [
                 { id: 'stats', cssClass: 'stats', label: 'WITCHER.Monster.SkillTab' },
                 { id: 'skills', cssClass: 'skills', label: 'WITCHER.Actor.tabs.skills' },
+                { id: 'combat', cssClass: 'combat', label: 'COMBAT' },
                 { id: 'profession', cssClass: 'profession', label: 'WITCHER.Profession' },
                 { id: 'inventory', cssClass: 'inventory', label: 'WITCHER.Monster.InventoryTab' },
                 { id: 'details', cssClass: 'details', label: 'WITCHER.Monster.DetailsTab' },
                 { id: 'magic', cssClass: 'magic', label: 'WITCHER.Monster.SpellsTab' },
                 { id: 'effects', cssClass: 'effects', label: 'WITCHER.activeEffect.tab' }
             ],
-            initial: 'stats',
+            initial: 'combat',
         },
         skillTabs: {
             tabs: [
@@ -118,6 +122,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
         context.skillTabs = this._prepareTabs('skillTabs');
         context.magicTabs = this._prepareTabs('magicTabs');
         context.detailTabs = this._prepareTabs('detailTabs');
+        context.defenseOptions = CONFIG.WITCHER.defenseOptions ?? [];
 
         context.systemFields = this.document.system.schema.fields;
         context.enrichedText = {
@@ -152,7 +157,7 @@ export default class WitcherMonsterSheet extends WitcherActorSheet {
 
     async getOrCreateFolder() {
         let folderName = `${game.i18n.localize('WITCHER.Loot.Name')}`;
-        let type = CONST.FOLDER_DOCUMENT_TYPES[0]; //actor
+        let type = CONST.FOLDER_DOCUMENT_TYPES[0];
         let folder = game.folders?.find(folder => folder.type == type && folder.name === folderName);
         if (!folder) {
             folder = await Folder.create({
