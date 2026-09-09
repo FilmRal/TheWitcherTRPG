@@ -18,10 +18,7 @@
 
         <section class="red-combat-panel">
             <div class="red-combat-section-title">
-                <div>
-                    <span class="red-combat-kicker">OFFENCE</span>
-                    <h3>Attacks</h3>
-                </div>
+                <div><span class="red-combat-kicker">OFFENCE</span><h3>Attacks</h3></div>
                 <span class="red-combat-count">{{weapons.length}}</span>
             </div>
             <div class="red-monster-attack-grid">
@@ -29,10 +26,7 @@
                     <article class="red-monster-attack-card item" data-item-id="{{weapon.id}}" data-type="weapon">
                         <div class="red-monster-attack-top">
                             <img src="{{weapon.img}}" alt="{{weapon.name}}">
-                            <div>
-                                <h4>{{weapon.name}}</h4>
-                                <span>{{weapon.system.type.text}}</span>
-                            </div>
+                            <div><h4>{{weapon.name}}</h4><span>{{weapon.system.type.text}}</span></div>
                             {{#if weapon.system.equipped}}<b class="red-combat-equipped">READY</b>{{/if}}
                         </div>
                         <div class="red-monster-attack-stats">
@@ -48,11 +42,7 @@
                         </div>
                         <div class="invisible item-info red-monster-attack-details">
                             {{#if weapon.system.description}}<p>{{weapon.system.description}}</p>{{/if}}
-                            <div class="red-combat-tags">
-                                <span>{{weapon.system.range}}</span>
-                                <span>{{weapon.system.weight}} weight</span>
-                                <span>{{localize (lookup ../config.weapon.hands weapon.system.hands)}}</span>
-                            </div>
+                            <div class="red-combat-tags"><span>{{weapon.system.range}}</span><span>{{weapon.system.weight}} weight</span></div>
                         </div>
                     </article>
                 {{else}}
@@ -61,11 +51,34 @@
             </div>
         </section>
 
-        <div class="red-combat-two-column">
+        {{#if combatAbilities.length}}
             <section class="red-combat-panel">
                 <div class="red-combat-section-title">
-                    <div><span class="red-combat-kicker">CORE</span><h3>Unarmed</h3></div>
+                    <div><span class="red-combat-kicker">SPECIAL</span><h3>Abilities & Magic</h3></div>
+                    <span class="red-combat-count">{{combatAbilities.length}}</span>
                 </div>
+                <div class="red-monster-ability-grid">
+                    {{#each combatAbilities as |ability|}}
+                        <article class="red-monster-ability-card item" data-item-id="{{ability.id}}" data-type="{{ability.type}}">
+                            <img src="{{ability.img}}" alt="{{ability.name}}">
+                            <div class="red-monster-ability-info">
+                                <h4>{{ability.name}}</h4>
+                                <span>{{ability.type}}</span>
+                                {{#if ability.system.description}}<p>{{ability.system.description}}</p>{{/if}}
+                            </div>
+                            <div class="red-monster-ability-actions">
+                                <a class="item-roll red-attack-button"><i class="fa-solid fa-bolt"></i> USE</a>
+                                <a class="item-chat red-item-button" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}"><i class="fa-regular fa-message"></i></a>
+                            </div>
+                        </article>
+                    {{/each}}
+                </div>
+            </section>
+        {{/if}}
+
+        <div class="red-combat-two-column">
+            <section class="red-combat-panel">
+                <div class="red-combat-section-title"><div><span class="red-combat-kicker">CORE</span><h3>Unarmed</h3></div></div>
                 <div class="red-unarmed-grid">
                     <div class="red-unarmed-card"><span>PUNCH</span><strong>{{system.attackStats.punch.value}}</strong><small>MELEE</small></div>
                     <div class="red-unarmed-card"><span>KICK</span><strong>{{system.attackStats.kick.value}}</strong><small>MELEE</small></div>
@@ -73,14 +86,12 @@
             </section>
 
             <section class="red-combat-panel">
-                <div class="red-combat-section-title">
-                    <div><span class="red-combat-kicker">DEFENCE</span><h3>Defensive Options</h3></div>
-                </div>
+                <div class="red-combat-section-title"><div><span class="red-combat-kicker">DEFENCE</span><h3>Defensive Options</h3></div></div>
                 <div class="red-defense-grid">
                     {{#each defenseOptions as |defense|}}
                         <div class="red-defense-card">
                             <i class="fa-solid fa-shield-halved"></i>
-                            <div><strong>{{localize defense.label}}</strong><span>{{#if defense.modifier}}{{signed defense.modifier}}{{else}}+0{{/if}}</span></div>
+                            <div><strong>{{localize defense.label}}</strong><span>{{defense.modifier}}</span></div>
                         </div>
                     {{/each}}
                 </div>
@@ -88,9 +99,7 @@
         </div>
 
         <section class="red-combat-panel">
-            <div class="red-combat-section-title">
-                <div><span class="red-combat-kicker">TACTICAL</span><h3>Combat Stats</h3></div>
-            </div>
+            <div class="red-combat-section-title"><div><span class="red-combat-kicker">TACTICAL</span><h3>Combat Stats</h3></div></div>
             <div class="red-tactical-grid">
                 <div><span>RUN</span><strong>{{system.derivedStats.run.value}}</strong></div>
                 <div><span>LEAP</span><strong>{{system.derivedStats.leap.value}}</strong></div>
