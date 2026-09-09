@@ -25,17 +25,15 @@
 @import './dialog.css';
 @import './tab-inventory-list.css';
 @import './rewards.css';
-
 @import './character/sheet.css';
 @import './character/tab-profession.css';
-
 @import './monster/header.css';
 @import './monster/inventory.css';
 @import './monster/sheet.css';
 @import './monster/sidebar.css';
 @import './monster/details.css';
-
 @import './configurations/modifier-configuration.css';
+@import './red-ui.css';
 
 @font-face {
     font-family: 'Thewitcher';
@@ -46,20 +44,9 @@
     font-family: Thewitcher;
 }
 
-.skill-column details summary > * {
-    display: inline;
-}
-
-.skill-column details[open] > summary::before {
-    transform: rotate(-135deg) translatey(-0.3em);
-}
-
-.skill-column summary {
-    list-style: none;
-    padding-left: 4px;
-    cursor: pointer;
-}
-
+.skill-column details summary > * { display: inline; }
+.skill-column details[open] > summary::before { transform: rotate(-135deg) translatey(-0.3em); }
+.skill-column summary { list-style: none; padding-left: 4px; cursor: pointer; }
 .skill-column summary::before {
     display: inline-block;
     content: '';
@@ -71,7 +58,4 @@
     width: 0.75em;
     transform: rotate(45deg) translatey(-0.1em);
 }
-
-.grid {
-    display: grid;
-}
+.grid { display: grid; }
