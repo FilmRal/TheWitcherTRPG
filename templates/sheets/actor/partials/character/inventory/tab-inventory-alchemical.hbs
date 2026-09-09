@@ -2,84 +2,74 @@
     <summary class="list-header valuables-list-header">
         {{> "systems/TheWitcherTRPG/templates/sheets/actor/partials/character/inventory/inventory-items-summary.hbs" header=header itemType=itemType hasQuantity=hasQuantity}}
     </summary>
-    
-    <ol class="list item-table item-list">
+
+    <ol class="list item-table item-list red-inventory-cards">
         {{#each alchemicals as |alchemical id|}}
-            <li class="item list-item draggable" data-item-id="{{alchemical.id}}">
-                <div class="list-details valuable-details">
-                    <a class="item-display-info display-details">
-                        <img class="item-image item-list-image" src="{{alchemical.img}}">
-                        <span class="item-image item-list-image"
-                            data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
-                            <i class="fa-solid fa-book"></i>
-                        </span>
+            <li class="item list-item draggable red-inventory-card" data-item-id="{{alchemical.id}}">
+                <div class="red-inventory-main">
+                    <a class="item-display-info red-inventory-image" data-tooltip="{{localize 'WITCHER.Item.openDescription'}}">
+                        <img src="{{alchemical.img}}" alt="{{alchemical.name}}">
                     </a>
-                    <div>{{alchemical.name}}</div>
-                    <div class="list-label">
-                        <span>
-                            <input class="inline-edit item-quantity" data-field="system.quantity" type="text"
-                                value="{{alchemical.system.quantity}}" data-dtype="Number" />
-                        </span>
-                        <span class="list-controls">
-                            <a class="item-chat" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
-                                <i class="fa-regular fa-message"></i>
-                            </a>
-                        </span>
+                    <div>
+                        <div class="red-inventory-title">
+                            <span class="red-inventory-name">{{alchemical.name}}</span>
+                        </div>
+                        <div class="red-inventory-type">{{alchemical.system.type}}</div>
+                    </div>
+                    <div class="red-inventory-stack">
+                        <span>{{localize "WITCHER.table.Quantity"}}</span>
+                        <input class="inline-edit item-quantity" data-field="system.quantity" type="number"
+                            value="{{alchemical.system.quantity}}" data-dtype="Number" />
                     </div>
                 </div>
-                <div class="invisible item-info list-item-info">
+
+                <div class="red-inventory-actions">
+                    {{#if alchemical.isConsumable}}
+                        <a class="item-consume red-inventory-button red-primary" data-tooltip="Consume {{alchemical.name}}">
+                            <i class="fa-solid fa-bottle-droplet"></i> CONSUME
+                        </a>
+                    {{/if}}
+                    <a class="item-display-info red-inventory-button">
+                        <i class="fa-solid fa-magnifying-glass"></i> INSPECT
+                    </a>
+                    <a class="item-chat red-inventory-button" data-tooltip="{{localize 'WITCHER.Item.sendToChat'}}">
+                        <i class="fa-regular fa-message"></i> CHAT
+                    </a>
+                </div>
+
+                <div class="invisible item-info red-inventory-details">
                     <div class="item-tags">
-                        <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Type"}}">
-                            <i class="fa-solid fa-vial"></i>
-                            {{alchemical.system.type}}
-                        </span>
+                        {{#if alchemical.system.type}}
+                            <span class="item-tag"><i class="fa-solid fa-vial"></i> {{alchemical.system.type}}</span>
+                        {{/if}}
                         {{#if alchemical.system.alchemyDC}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Diagram.alchemyDC"}}">
-                                <i class="fa-solid fa-dice-d20"></i>
-                                {{alchemical.system.alchemyDC}}
-                            </span>
+                            <span class="item-tag"><i class="fa-solid fa-dice-d20"></i> DC {{alchemical.system.alchemyDC}}</span>
                         {{/if}}
                         {{#if alchemical.system.avail}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Weapon.Availability"}}">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                {{ localize (lookup ../config.Availability alchemical.system.avail) }}
-                            </span>
+                            <span class="item-tag"><i class="fa-solid fa-magnifying-glass"></i> {{localize (lookup ../config.Availability alchemical.system.avail)}}</span>
                         {{/if}}
                         {{#if alchemical.system.time}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Alchemy.Duration"}}">
-                                <i class="fa-solid fa-hourglass-half"></i>
-                                {{alchemical.system.time}}
-                            </span>
+                            <span class="item-tag"><i class="fa-solid fa-hourglass-half"></i> {{alchemical.system.time}}</span>
                         {{/if}}
                         {{#if alchemical.system.weight}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Item.Weight"}}">
-                                <i class="fa-solid fa-weight-hanging"></i>
-                                {{alchemical.system.weight}}
-                            </span>
+                            <span class="item-tag"><i class="fa-solid fa-weight-hanging"></i> {{alchemical.system.weight}}</span>
                         {{/if}}
                         {{#if alchemical.system.cost}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.ComponentsList.cost"}}">
-                                <i class="fa-solid fa-coins"></i>
-                                {{alchemical.system.cost}}
-                            </span>
+                            <span class="item-tag"><i class="fa-solid fa-coins"></i> {{alchemical.system.cost}}</span>
                         {{/if}}
                         {{#if alchemical.system.toxicity}}
-                            <span class="item-tag" data-tooltip="{{localize "WITCHER.Alchemy.Toxicity"}}">
-                                <i class="fa-solid fa-skull-crossbones"></i>
-                                {{alchemical.system.toxicity}}
-                            </span>
+                            <span class="item-tag"><i class="fa-solid fa-skull-crossbones"></i> {{alchemical.system.toxicity}}</span>
                         {{/if}}
                     </div>
+
                     {{#if alchemical.system.effect}}
-                        <div class="list-item-description">
+                        <div class="list-item-description red-inventory-description">
                             <h3>{{localize "WITCHER.Item.Description"}}</h3>
-                            <span>{{#if (eq ../itemType 'mutagen')}}<b>{{localize "WITCHER.Item.Effect"}}: </b>{{/if}}
-                                {{alchemical.system.effect}}</span>
+                            <span>{{#if (eq ../itemType 'mutagen')}}<b>{{localize "WITCHER.Item.Effect"}}: </b>{{/if}}{{alchemical.system.effect}}</span>
                         </div>
                     {{/if}}
                     {{#if alchemical.system.minorMutation}}
-                        <span><b>{{localize "WITCHER.Mutagen.MinorMutation"}}:
-                            </b>{{alchemical.system.minorMutation}}</span>
+                        <div class="red-inventory-description"><b>{{localize "WITCHER.Mutagen.MinorMutation"}}:</b> {{alchemical.system.minorMutation}}</div>
                     {{/if}}
                 </div>
             </li>
