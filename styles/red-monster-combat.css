@@ -1,0 +1,102 @@
+.red-monster-combat {
+    padding: 14px;
+    background: var(--witcher-red-bg);
+    color: var(--witcher-red-text);
+}
+
+.red-combat-dashboard { display: grid; gap: 14px; }
+.red-combat-panel {
+    background: linear-gradient(145deg, var(--witcher-red-panel), var(--witcher-red-panel-2));
+    border: 1px solid var(--witcher-red-border);
+    border-radius: var(--witcher-red-radius);
+    box-shadow: var(--witcher-red-shadow);
+    overflow: hidden;
+}
+.red-combat-panel-header,
+.red-combat-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--witcher-red-border);
+}
+.red-combat-panel-header h2,
+.red-combat-section-title h3 { margin: 2px 0 0; color: var(--witcher-red-text); }
+.red-combat-panel-header h2 { font-size: 1.2rem; }
+.red-combat-section-title h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; }
+.red-combat-kicker { color: var(--witcher-red-accent-2); font-size: .62rem; font-weight: 800; letter-spacing: .16em; }
+.red-combat-threat,
+.red-combat-count,
+.red-combat-equipped {
+    padding: 4px 8px;
+    border: 1px solid var(--witcher-red-border-strong);
+    border-radius: 4px;
+    color: var(--witcher-red-accent-2);
+    font-size: .66rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+}
+.red-combat-count { min-width: 28px; text-align: center; }
+.red-combat-metrics { display: grid; grid-template-columns: repeat(4, 1fr); }
+.red-combat-metric { padding: 11px 14px; border-right: 1px solid var(--witcher-red-border); }
+.red-combat-metric:last-child { border-right: 0; }
+.red-combat-metric span,
+.red-monster-attack-stats small,
+.red-unarmed-card small,
+.red-tactical-grid span { display: block; color: var(--witcher-red-muted); font-size: .6rem; font-weight: 800; letter-spacing: .1em; }
+.red-combat-metric strong { display: block; margin-top: 3px; font-size: .95rem; }
+
+.red-monster-attack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; padding: 12px; }
+.red-monster-attack-card { background: var(--witcher-red-panel-3); border: 1px solid var(--witcher-red-border); border-radius: 6px; overflow: hidden; }
+.red-monster-attack-top { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 10px; padding: 10px; }
+.red-monster-attack-top img { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; border: 1px solid var(--witcher-red-border-strong); }
+.red-monster-attack-top h4 { margin: 0 0 3px; font-size: .88rem; }
+.red-monster-attack-top span { color: var(--witcher-red-muted); font-size: .68rem; }
+.red-combat-equipped { color: var(--witcher-red-good); border-color: var(--witcher-red-good); }
+.red-monster-attack-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--witcher-red-border); border-bottom: 1px solid var(--witcher-red-border); }
+.red-monster-attack-stats div { padding: 8px; border-right: 1px solid var(--witcher-red-border); }
+.red-monster-attack-stats div:last-child { border-right: 0; }
+.red-monster-attack-stats strong { display: block; margin-top: 2px; font-size: .76rem; }
+.red-monster-attack-actions { display: flex; gap: 6px; padding: 8px; }
+.red-monster-attack-actions .red-attack-button { flex: 1; }
+.red-monster-attack-details { padding: 0 10px 10px; color: var(--witcher-red-muted); font-size: .72rem; }
+.red-monster-attack-details p { margin: 0 0 8px; }
+.red-combat-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.red-combat-tags span { padding: 3px 6px; border: 1px solid var(--witcher-red-border); border-radius: 3px; }
+.red-combat-empty { padding: 20px; color: var(--witcher-red-muted); text-align: center; }
+
+.red-combat-two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.red-unarmed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+.red-unarmed-card { padding: 12px; background: var(--witcher-red-panel-3); border: 1px solid var(--witcher-red-border); border-radius: 5px; }
+.red-unarmed-card span { display: block; font-size: .7rem; font-weight: 800; letter-spacing: .08em; }
+.red-unarmed-card strong { display: block; margin: 5px 0; color: var(--witcher-red-accent-2); font-size: 1rem; }
+.red-defense-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; padding: 12px; }
+.red-defense-card { display: flex; align-items: center; gap: 9px; padding: 8px; background: var(--witcher-red-panel-3); border: 1px solid var(--witcher-red-border); border-radius: 5px; }
+.red-defense-card > i { color: var(--witcher-red-accent-2); }
+.red-defense-card strong { display: block; font-size: .7rem; }
+.red-defense-card span { color: var(--witcher-red-muted); font-size: .66rem; }
+.red-tactical-grid { display: grid; grid-template-columns: repeat(6, 1fr); }
+.red-tactical-grid > div { padding: 11px; border-right: 1px solid var(--witcher-red-border); }
+.red-tactical-grid > div:last-child { border-right: 0; }
+.red-tactical-grid strong { display: block; margin-top: 3px; font-size: .9rem; }
+
+@media (max-width: 850px) {
+    .red-combat-metrics { grid-template-columns: repeat(2, 1fr); }
+    .red-combat-metric:nth-child(2) { border-right: 0; }
+    .red-combat-two-column { grid-template-columns: 1fr; }
+    .red-tactical-grid { grid-template-columns: repeat(3, 1fr); }
+    .red-tactical-grid > div:nth-child(3) { border-right: 0; }
+}
+
+@media (max-width: 600px) {
+    .red-monster-combat { padding: 8px; }
+    .red-monster-attack-grid { grid-template-columns: 1fr; padding: 8px; }
+    .red-monster-attack-stats { grid-template-columns: repeat(2, 1fr); }
+    .red-monster-attack-stats div:nth-child(2) { border-right: 0; }
+    .red-monster-attack-stats div:nth-child(-n+2) { border-bottom: 1px solid var(--witcher-red-border); }
+    .red-defense-grid { grid-template-columns: 1fr; }
+    .red-tactical-grid { grid-template-columns: repeat(2, 1fr); }
+    .red-tactical-grid > div:nth-child(3) { border-right: 1px solid var(--witcher-red-border); }
+    .red-tactical-grid > div:nth-child(even) { border-right: 0; }
+}
