@@ -41,6 +41,7 @@
 @import './red-magic.css';
 @import './red-equipment.css';
 @import './red-inventory.css';
+@import './red-chat.css';
 
 @font-face {
     font-family: 'Thewitcher';
